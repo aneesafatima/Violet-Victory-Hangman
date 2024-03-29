@@ -11,25 +11,56 @@ import {MyContext} from './GlobalState'
 
 
 function App() {
-  const {playable, correctLetters, wrongLetters, selectedWord, setCorrectLetters, setWrongLetters} = useContext(MyContext);
+ let messageState;
+  const {
+    playable,
+    correctLetters,
+    wrongLetters,
+    selectedWord,
+    setCorrectLetters,
+    setWrongLetters
+  } = useContext(MyContext);
+ 
   useEffect(()=>{
-    const update = (e) => {
+    const handleKeydown = (e) => {
     let {key,keyCode} = e;
-    key = key.toUpperCase();
+    key = key.toLowerCase();
+    console.log(key)
+    console.log(keyCode)
     if(playable)
     {
-     if(keyCode>=65 && keyCode<=96)
+     if(keyCode>=65&& keyCode<=90)
      {
-      if(selectedWord.includes(key))
+      if(selectedWord.includes(key)) //if selected word includes the key
       {
         if(!correctLetters.includes(key))
-          setCorrectLetters([...correctLetters, letter])
+        {
+          setCorrectLetters(correctLetters => [...correctLetters, key]);
+          console.log(correctLetters);
+        }
+        
+      }
+      else if(!wrongLetters.includes(key))
+      {
+           setWrongLetters(wrongLetters => [...wrongLetters, key]);
+           console.log(wrongLetters);
       }
      }
     }
-
     }
-  })
+    if(correctLetters.length === selectedWord.length || wrongLetters.length ===6)
+    messageState = 'block'
+    window.addEventListener('keydown', handleKeydown);
+    return () => window.removeEventListener('keydown', handleKeydown);
+  },[correctLetters, wrongLetters, playable])
+
+  
+
+  // useEffect(() => {
+  //   console.log("Correct letters have been updated:", correctLetters); //why log twice
+  // }, [correctLetters]);
+
+
 
 
 
@@ -40,12 +71,12 @@ function App() {
       <InputBox/>
       <div className="flex justify-around pr-3 py-5">
         <FigureParts/>
-        <WrongLetters/>
+        <WrongLetters wrongLetters={wrongLetters}/>
       </div>
-      <DisplayWord selectedWord={selectedWord}/>
-      <div className="absolute top-0 w-full hidden"><FinalMessage/></div>
+      <DisplayWord selectedWord={selectedWord} correctLetters={correctLetters}/>
+      <div className={`absolute hidden top-0 w-full ${messageState}`}><FinalMessage correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord}/></div>
     </div>
   )
 }
 
-export default App
+export default App;
