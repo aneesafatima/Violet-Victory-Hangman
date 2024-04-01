@@ -14,6 +14,7 @@ function DisplayWord({selectedWord, correctLetters}) {
           )
         })
       }
+      
     </div>
   )
 }
