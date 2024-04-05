@@ -2,8 +2,8 @@ import React from 'react'
 
 function Header() {
   return (
-    <div className="bg-[#192a32] h-[6vh] text-white font-bold px-3 py-3">
-      Hangman Game - Find the hidden word
+    <div className="bg-[#5c5470] h-10 text-gray-300 font-semibold flex justify-center items-center">
+      Hangman Game - Find the hidden word 🤔
     </div>
   )
 }

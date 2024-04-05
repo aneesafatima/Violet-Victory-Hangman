@@ -1,24 +1,20 @@
 import React from 'react';
 import  {useState, createContext } from 'react';
-
+import { generate } from "random-words";
 
 const MyContext = createContext();
-const choices = ['programming', 'interface', 'wizard', 'hello'];
-const selectedWord = choices[Math.floor(Math.random()*choices.length)];
 
 function GlobalState({children}) {
-
-console.log(selectedWord);
 const [correctLetters, setCorrectLetters]= useState([]);
 const [wrongLetters, setWrongLetters]= useState([]);
 const [playable, setPlayable] = useState(true);
-
-
+const [selectedWord, setSelectedWord] = useState(generate(1)[0]);
+console.log(selectedWord)
+// const apiKey = process.env.REACT_APP_API_KEY;
     return(
-        <MyContext.Provider value={{ choices, correctLetters, wrongLetters, playable, setCorrectLetters, setWrongLetters,setPlayable, selectedWord}}>
+        <MyContext.Provider value={{ correctLetters, wrongLetters, playable, setCorrectLetters, setWrongLetters,setPlayable,setSelectedWord, selectedWord}}>
             {children}
         </MyContext.Provider>
     )
 }
-
 export {GlobalState, MyContext} ;

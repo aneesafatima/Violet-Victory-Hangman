@@ -1,3 +1,4 @@
+import { generate } from "random-words";
 export const checkWin = (correctLetters, wrongLetters, word) => {
   let status = "win";
 
@@ -14,9 +15,10 @@ export const checkWin = (correctLetters, wrongLetters, word) => {
   return status;
 };
 
-export const reset = (setCorrectLetters, setWrongLetters, setPlayable) => {
-  console.log("reset");
+export const reset = (setCorrectLetters, setWrongLetters, setPlayable, setSelectedWord, selectedWord) => {
   setCorrectLetters([]);
   setWrongLetters([]);
   setPlayable(true);
+  setSelectedWord(generate(1)[0])
+  console.log(selectedWord);
 };

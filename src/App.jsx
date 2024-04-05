@@ -1,6 +1,7 @@
+
 import { useEffect, useContext, useState} from 'react'
 import Header from './components/Header'
-import InputBox from './components/InputBox'
+import ScoreBoard from './components/ScoreBoard'
 import FigureParts from './components/FigureParts'
 import WrongLetters from './components/WrongLetters'
 import DisplayWord from './components/DisplayWord'
@@ -10,20 +11,20 @@ import {MyContext} from './GlobalState'
 
 
 
-
 function App() {
 
-  const {
+  const{
     setPlayable,
     playable,
     correctLetters,
     wrongLetters,
-    selectedWord,
     setCorrectLetters,
-    setWrongLetters
+    setWrongLetters,
+    selectedWord,
+    setSelectedWord
   } = useContext(MyContext);
 
-  const [notificationStatus, setNotificationStatus] = useState(96)
+  const [notificationStatus, setNotificationStatus] = useState(96);
  
   useEffect(()=>
   {
@@ -41,7 +42,6 @@ function App() {
         if(!correctLetters.includes(key))
         { 
           setCorrectLetters(correctLetters => [...correctLetters, key]);
-          console.log(correctLetters);
         }
         else{
           showNotification();
@@ -50,7 +50,6 @@ function App() {
       else if(!wrongLetters.includes(key))
       {
            setWrongLetters(wrongLetters => [...wrongLetters, key]);
-           console.log(wrongLetters);
       }
      }
     }
@@ -60,32 +59,27 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeydown);
   },[correctLetters, wrongLetters, playable])
 
+  
   const showNotification = () => {
-    setNotificationStatus(-96);//Making the notification visible
+    setNotificationStatus(-28);//Making the notification visible
     setTimeout(() => {
      setNotificationStatus(96);// Remove the notification after 1.5s seconds
     }, 1500); // 1500 milliseconds = 1.5 seconds
-    
-    
   };
 
   return (
    
-    <div className="bg-[#497285] h-screen relative overflow-y-hidden">
+    <div className="bg-[#dbd8e3] h-screen relative overflow-y-hidden">
       <Header/>
-      <InputBox/>
+      <ScoreBoard/>
       <div className="flex justify-around pr-3 py-5">
         <FigureParts/>
         <WrongLetters wrongLetters={wrongLetters}/>
       </div>
       <DisplayWord selectedWord={selectedWord} correctLetters={correctLetters}/>
-      <div className={`absolute top-0 w-full`}><FinalMessage correctLetters={correctLetters} wrongLetters={wrongLetters} selectedWord={selectedWord} setPlayable={setPlayable}/></div>
-     <div className={`translate-y-${notificationStatus}`}><ShowNotification/></div> 
-
+      <div className={`absolute top-0 w-full`}><FinalMessage/></div>
+     <div className={`translate-y-${notificationStatus}`}> <ShowNotification/> </div> 
     </div>
   )
 }
-
-
-
 export default App;
