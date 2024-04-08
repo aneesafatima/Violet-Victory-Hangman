@@ -9,6 +9,8 @@ export const checkWin = (correctLetters, wrongLetters, word) => {
     }
     if (wrongLetters.length === 6) {
       status = "lose";
+      console.log(wrongLetters[5])
+      wrongLetters[5] = wrongLetters[5].replace(',' , '')
       lose.play();
     }
   });
