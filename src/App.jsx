@@ -29,7 +29,7 @@ function App() {
   
  
   useEffect(()=>
-  { console.log(selectedWord)
+  {
     const handleKeydown = (e) => {
     let {key,keyCode} = e;
     key = key.toLowerCase();
