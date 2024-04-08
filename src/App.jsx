@@ -29,7 +29,7 @@ function App() {
   
  
   useEffect(()=>
-  {
+  { console.log(selectedWord)
     const handleKeydown = (e) => {
     let {key,keyCode} = e;
     key = key.toLowerCase();
@@ -76,7 +76,7 @@ function App() {
 
   return (
    
-    <div className="bg-[#dbd8e3] h-screen relative space-y-5 overflow-y-hidden md:space-y-7 lg:space-y-10">
+    <div className="bg-[#dbd8e3] h-screen relative space-y-5 overflow-y-hidden lg:space-y-7">
       <Header/>
       <ScoreBoard score ={score} setScore={setScore}/>
       <div className="flex justify-around pr-3 py-2">
