@@ -32,3 +32,7 @@ Welcome to the Hangman Game! This is a classic word-guessing game with a twist. 
 This Hangman Game was created with inspiration from the classic game and enhanced with modern web technologies. Special thanks to the open-source community for their valuable contributions.
 
 Feel free to explore the codebase, suggest improvements, or contribute to make this Hangman Game even more enjoyable! 🚀
+
+## 📷 Video 
+
+https://github.com/aneesa04/Violet-Victory-Hangman/assets/161751452/a8f908d8-6b26-42c2-829e-bab6a212222e
