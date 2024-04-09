@@ -1,6 +1,6 @@
-# Hangman Game 🎩
+# Violet Victory Hangman 🎩
 
-Welcome to the Hangman Game! This is a classic word-guessing game with a twist. In this version, you'll be playing with a 💜 purple-themed interface, complete with a 📊 scoreboard, a 🔄 reset button to clear the scoreboard, and engaging 🎶 sound effects for wins and losses.
+Welcome to the Violet Victory Hangman! This is a classic word-guessing game with a twist. In this version, you'll be playing with a 💜 purple-themed interface, complete with a 📊 scoreboard, a 🔄 reset button to clear the scoreboard, and engaging 🎶 sound effects for wins and losses.
 
 ## Features
 
